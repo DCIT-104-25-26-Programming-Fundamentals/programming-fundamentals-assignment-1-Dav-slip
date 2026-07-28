@@ -39,3 +39,72 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def calculate_sum(numbers):
+    """Return the sum of all numbers in the list (no built-in sum())."""
+    total = 0
+    for value in numbers:
+        total += value
+    return total
+
+
+def calculate_average(numbers):
+    """Return the average of the numbers in the list."""
+    return calculate_sum(numbers) / len(numbers)
+
+
+def find_maximum(numbers):
+    """Return the largest value in the list (no built-in max())."""
+    largest = numbers[0]
+    for value in numbers:
+        if value > largest:
+            largest = value
+    return largest
+
+
+def find_minimum(numbers):
+    """Return the smallest value in the list (no built-in min())."""
+    smallest = numbers[0]
+    for value in numbers:
+        if value < smallest:
+            smallest = value
+    return smallest
+
+
+def main():
+    count_input = input("How many numbers? ")
+
+    try:
+        count = int(count_input)
+    except ValueError:
+        print("Error: Please enter a valid whole number.")
+        return
+
+    if count <= 0:
+        print("Error: The count must be a positive integer.")
+        return
+
+    numbers = []
+    for i in range(1, count + 1):
+        value_input = input(f"Enter number {i}: ")
+        try:
+            value = float(value_input)
+        except ValueError:
+            print("Error: Please enter a valid number.")
+            return
+        numbers.append(value)
+
+    total = calculate_sum(numbers)
+    average = calculate_average(numbers)
+    maximum = find_maximum(numbers)
+    minimum = find_minimum(numbers)
+
+    print()
+    print("Results:")
+    print(f"Sum:     {total:g}")
+    print(f"Average: {average:g}")
+    print(f"Maximum: {maximum:g}")
+    print(f"Minimum: {minimum:g}")
+
+
+if __name__ == "__main__":
+    main()
